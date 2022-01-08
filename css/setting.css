@@ -1,0 +1,47 @@
+body{
+    background-image: url(../bg/Web\ 1920\ –\ 1.png);
+    /* background-size: 100%; */
+    /* text-align: center; */
+    /* align-content: center; */
+    margin-top: 70px;
+}
+ul{
+    /* position: fixed; */
+    list-style: none;
+    display: inline-block;
+    
+    padding-left: 0;
+    border: 2px solid white;
+    background-color: cadetblue;
+    }
+ul li{
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    padding: 20px;
+    margin: 50px;
+    
+    border: 2px solid white;
+    /* width: max-content; */
+    background-color: black;
+    
+}
+ul li a{
+    margin: 50px;
+    cursor: pointer;
+    /* border: 2px solid white; */
+    
+}
+ul li:hover  {
+    color: black;
+    background-color: aqua;
+    
+    
+}
+div{
+    text-align: center;
+    /* align-content: center; */
+    /* align-self: center; */
+    /* border: 2px solid white; */
+    
+}

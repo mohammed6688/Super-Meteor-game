@@ -1,0 +1,40 @@
+body{
+    background-image: url(../bg/Web\ 1920\ –\ 2.png);
+    background-size: 100%;
+    text-align: center;
+    /* align-content: center; */
+    margin-top: 70px;
+}
+
+.start{
+    cursor: pointer;
+}
+.setting{
+    /* position: absolute; */
+    /* bottom: 400px; */
+    margin-top: 300px;
+    display: inline-block;
+    cursor: pointer;
+}
+ul li ul li {
+  width: 100%;
+  float:left;
+  display:none;
+  background-color:aqua;
+  z-index: 1;
+}
+ul li :hover{
+/* background-color:antiquewhite; */
+}
+ul li:hover ul li {
+display:block;
+position: flex;
+width: 200px;
+}
+ul li a{
+color: black;
+text-decoration: none;
+display: block;
+}
+
+
