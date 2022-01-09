@@ -4,7 +4,6 @@ import Ball from "./ball.js";
 import Brick from "./brick.js";
 import {level1,level2, buildLevel} from "./levels.js";
 
-
 const GAMESTATE = {
     PAUSE: 0,
     RUNNING: 1,
@@ -12,7 +11,6 @@ const GAMESTATE = {
     GAMEOVER: 3,
     NEWLEVEL:4
 }
-
 export default class Game {
     constructor(gameWidth, gameHeight) {
         this.gameWidth = gameWidth;
