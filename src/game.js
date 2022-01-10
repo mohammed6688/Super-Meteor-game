@@ -1,8 +1,8 @@
 import Paddle from "./Paddle.js"
 import InputHandler from "./input.js";
 import Ball from "./ball.js";
-import Brick from "./brick.js";
-import {level1,level2, buildLevel} from "./levels.js";
+import {level1,level2,level3, buildLevel} from "./levels.js";
+
 
 const GAMESTATE = {
     PAUSE: 0,
@@ -21,9 +21,11 @@ export default class Game {
         new InputHandler(this.paddle, this);
         this.gameObject = [];
         this.brick = [];
-        this.levels = [level1,level2];
-        this.currentLevel=0;
-        this.lives=3;
+        this.levels = [level1,level2,level3];
+        this.currentLevel= localStorage.getItem("level");
+        if(this.currentLevel == null)this.currentLevel = 0;
+        console.log(this.currentLevel)
+        this.lives=20;
         this.audio = new Audio('assets/main_sound.mp3');
 
     }
