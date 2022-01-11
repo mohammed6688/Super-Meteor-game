@@ -1,8 +1,8 @@
 import Paddle from "./Paddle.js"
 import InputHandler from "./input.js";
 import Ball from "./ball.js";
-import Brick from "./brick.js";
-import {level1,level2, buildLevel} from "./levels.js";
+import {level1,level2,level3, buildLevel} from "./levels.js";
+
 
 const GAMESTATE = {
     PAUSE: 0,
@@ -21,9 +21,13 @@ export default class Game {
         new InputHandler(this.paddle, this);
         this.gameObject = [];
         this.brick = [];
-        this.levels = [level1,level2];
-        this.currentLevel=0;
+        this.levels = [level1,level2,level3];
+        this.currentLevel= localStorage.getItem("level");
+        if(this.currentLevel == null)this.currentLevel = 0;
+        console.log(this.currentLevel)
         this.lives=3;
+        this.currentScore=0;
+        this.maxScore=0;
         this.audio = new Audio('assets/main_sound.mp3');
 
     }
@@ -73,12 +77,38 @@ export default class Game {
             this.start();
 
         }
+
     }
 
     draw(ctx) {
         [...this.gameObject,...this.brick].forEach(obj => {
             obj.draw(ctx);
         });
+
+        ctx.fontFamily="Calculator LCDs,Arial"
+        //ctx.font = "30px Arial";
+        ctx.fillStyle = "red";
+
+        let num =this.currentScore.toString().length
+        switch (num) {
+            case 2:
+                ctx.fillText(this.currentScore, 35, 30);
+                break;
+            case 3:
+                ctx.fillText(this.currentScore, 35, 30);
+                break;
+            case 4:
+                ctx.fillText(this.currentScore, 40, 30);
+                break;
+            case 5:
+                ctx.fillText(this.currentScore, 45, 30);
+                break;
+            default:
+                ctx.fillText(this.currentScore, 35, 30);
+                break;
+
+        }
+
         if (this.gameState===GAMESTATE.PAUSE){
             ctx.rect(0,0,this.gameWidth,this.gameHeight);
             ctx.fillStyle="rgba(0,0,0,0.5)";

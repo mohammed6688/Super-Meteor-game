@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="337ab536-0c72-4f9d-8e67-e2834a3ac2ac" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/index2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ball.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/brick.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/brick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/levels.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/levels.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/setting.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +46,7 @@
       <workItem from="1641883899324" duration="648000" />
       <workItem from="1641899640844" duration="102000" />
       <workItem from="1641914110367" duration="12000" />
+      <workItem from="1641914328412" duration="4233000" />
     </task>
     <servers />
   </component>
