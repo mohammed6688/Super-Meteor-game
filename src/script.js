@@ -3,13 +3,15 @@ var button = document.getElementById("button");
 var setting = document.getElementById("setting");
 
 
-var audio = new Audio('assets/music_bg.mp3');
+var audio = new Audio('assets/main_sound.mp3');
 audio.volume = 0.4;
 aud.addEventListener('click', e => {
     if (audio.paused) {
         audio.play();
+        localStorage.setItem("audioFlag" , 1);
     } else {
         audio.pause();
+        localStorage.setItem("audioFlag" , 0);
     }
 });
 
