@@ -30,6 +30,7 @@ export default class Game {
         this.currentScore=0;
         this.maxScore=0;
         this.audio = new Audio('assets/main_sound.mp3');
+        this.audioFlag = JSON.parse(localStorage.getItem("audioFlag"));
 
     }
 
@@ -45,9 +46,11 @@ export default class Game {
         this.gameState=GAMESTATE.RUNNING;
         this.ball.reset();
 
-        this.audio.volume = 0.4;
-        this.audio.loop=true;
-        this.audio.play().then(r => console.log("played"));
+        if(this.audioFlag == 1){
+            this.audio.volume = 0.4;
+            this.audio.loop=true;
+            this.audio.play().then(r => console.log("played"));
+        }
 
         heartHandling(this.lives);
     }
