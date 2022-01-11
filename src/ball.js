@@ -1,5 +1,5 @@
 import {detectCollision} from "/src/collisionDetection.js";
-
+import {heartHandling} from "/src/index.js"
 
 export default class Ball{
     constructor(game) {
@@ -75,15 +75,14 @@ export default class Ball{
         {
             this.game.lives--;
             this.reset();
+
+            heartHandling(this.game.lives);
         }
         
         if(detectCollision(this, this.game.paddle))
         {
             this.speed.y = -this.speed.y;
             this.position.y = this.game.paddle.position.y - this.size;
-
-
-
         }
     }
 }

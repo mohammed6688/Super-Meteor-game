@@ -2,7 +2,7 @@ import Paddle from "./Paddle.js"
 import InputHandler from "./input.js";
 import Ball from "./ball.js";
 import {level1,level2,level3, buildLevel} from "./levels.js";
-
+import {heartHandling} from "/src/index.js"
 
 const GAMESTATE = {
     PAUSE: 0,
@@ -26,6 +26,7 @@ export default class Game {
         if(this.currentLevel == null)this.currentLevel = 0;
         console.log(this.currentLevel)
         this.lives=3;
+        heartHandling(0);
         this.currentScore=0;
         this.maxScore=0;
         this.audio = new Audio('assets/main_sound.mp3');
@@ -48,6 +49,7 @@ export default class Game {
         this.audio.loop=true;
         this.audio.play().then(r => console.log("played"));
 
+        heartHandling(this.lives);
     }
 
     togglePause() {

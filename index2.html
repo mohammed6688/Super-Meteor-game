@@ -16,8 +16,24 @@
 			background-repeat: no-repeat; /* Do not repeat the image */
 			background-size: cover;
 		}
-		img {
+		#img_ball, #img_brick {
 			display: none;
+		}													
+		div img{				
+			position: absolute;
+			width: 2em;
+			height: 2em;
+			margin: 0;
+			padding: 0;
+		}
+		#img_heart1{
+			left: 4em;
+		}
+		#img_heart2{
+			left: 6em;
+		}
+		#img_heart3{
+			left: 8em;
 		}
 	</style>
 </head>
@@ -25,6 +41,12 @@
 <body>	
 	<img id="img_ball" src="assets/ball.png">	
 	<img id="img_brick" src="assets/brick.png">	
+
+	<div>
+		<img id="img_heart1" src="assets/img_heart.png">	
+		<img id="img_heart2" src="assets/img_heart.png">	
+		<img id="img_heart3" src="assets/img_heart.png">	
+	</div>
 
 	<canvas id="gameScreen"></canvas>
 
