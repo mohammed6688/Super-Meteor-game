@@ -10,7 +10,7 @@ easy.addEventListener('click', e => {
 });
 medium.addEventListener('click', e => {
     //put code here
-    window.localStorage.setItem("level","medum");
+    window.localStorage.setItem("level","medium");
 });
 hard.addEventListener('click', e => {
     //put code here
