@@ -6,7 +6,7 @@ body{
     margin-top: 70px;
 }
 ul{
-    /* position: fixed; */
+    
     list-style: none;
     display: inline-block;
     
@@ -35,7 +35,7 @@ ul li a{
 ul li:hover  {
     color: black;
     background-color: aqua;
-    
+    cursor: pointer;
     
 }
 div{
