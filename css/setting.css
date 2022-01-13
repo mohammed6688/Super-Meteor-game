@@ -6,7 +6,7 @@ body{
     margin-top: 70px;
 }
 ul{
-    
+    /* position: fixed; */
     list-style: none;
     display: inline-block;
     
@@ -29,16 +29,19 @@ ul li{
 ul li a{
     margin: 50px;
     cursor: pointer;
-   
+    /* border: 2px solid white; */
     
 }
 ul li:hover  {
     color: black;
     background-color: aqua;
-    cursor: pointer;
+    
     
 }
 div{
     text-align: center;
-
+    /* align-content: center; */
+    /* align-self: center; */
+    /* border: 2px solid white; */
+    
 }
