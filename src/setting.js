@@ -9,8 +9,8 @@ easy.addEventListener('click', e => {
     window.open("index2.html", "_self");
 });
 medium.addEventListener('click', e => {
-    
     //window.localStorage.setItem("level","medium");
+    
     window.localStorage.setItem("level",1);
     window.open("index2.html", "_self");
 });
