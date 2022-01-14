@@ -1,9 +1,18 @@
 var button = document.getElementById("button");
+
 var settings = document.getElementById("img_setting")
 var sub_menu = document.getElementById("sub_menu")
 var mainMusic = document.getElementById("mainMusic")
 var slider_song1 = document.getElementById("song1")
 var img_song1 = document.getElementById("img_unmute1")
+
+var maxScore = document.getElementById("maxScore");
+
+// let maxS = JSON.parse(localStorage.getItem("maxScore"));
+// if(maxS!=null){
+//     maxScore.textContent="Max Score \n"+ maxS;
+// }
+
 
 slider_song1.value = JSON.parse(localStorage.getItem('sliderVal'))
 localStorage.setItem('pre_sliderVal',slider_song1.value)

@@ -42,27 +42,6 @@ export default class Ball{
         );
     }
     update(deltaTime){
-    //     this.position.x+=this.speed.x;
-    //     this.position.y+=this.speed.y;
-
-    //     //if hit wall left or right
-    //     if (this.position.x+this.size>this.gameWidth|| this.position.x<0){
-    //         this.speed.x =- this.speed.x;
-    //     }
-    //     //top and bottom of game
-    //     if (this.position.y+this.size>this.gameHeight||this.position.y<0){
-    //         this.speed.y =- this.speed.y;
-    //     }
-    //     //bottom of game
-    //     if (this.position.y+this.size>this.gameHeight)this.game.lives--;
-
-    //     if (detectCollision(this,this.game.paddle)){
-    //         this.speed.y=-this.speed.y;
-    //         this.position.y=this.game.paddle.position.y-this.size;
-    //     }
-
-    // }
-
         this.position.x += this.speed.x
         this.position.y += this.speed.y
         if (this.position.x + this.size > this.gameWidth || this.position.x < 0) {
