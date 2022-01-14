@@ -146,10 +146,10 @@ export default class Game {
             ctx.fillStyle = "rgba(0,0,0,1)";
             ctx.fill();
 
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2);
+            // ctx.font = "30px Arial";
+            // ctx.fillStyle = "white";
+            // ctx.textAlign = "center";
+            // ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2);
 
             document.getElementById("gameOver").style.display = "block";
 
