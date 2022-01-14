@@ -99,6 +99,7 @@ exit.addEventListener('click', e => {
     window.open("index.html", "_self");
  });
 gameOver.addEventListener('click', e => {
+    game.audio.mainPause();
     game= new Game(GAME_WIDTH,GAME_HEIGHT);
  });
 

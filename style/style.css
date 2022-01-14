@@ -204,3 +204,24 @@ h2 {
   opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */
+
+#maxScore {
+  position: absolute;
+  z-index: 800;
+  left: 0;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-family: 'Yellowtail', cursive;
+  font-size: 2.5rem;
+  color: #ffd8d8;
+  text-shadow:
+    .1vw 0vw .25vw #ffd8d8, .2vw 0vw .25vw #ffd8d8, .4vw 0vw .25vw #ffd8d8,
+
+    .1vw 0vw 0vw #d100b1, .2vw 0vw 0vw #d100b1, .4vw 0vw 0vw #d100b1,
+    .1vw 0vw .1vw #d100b1, .2vw 0vw .1vw #d100b1, .4vw 0vw .1vw #d100b1,
+    .1vw 0vw 2vw #d100b1, .2vw 0vw 2vw #d100b1, .4vw 0vw 2vw #d100b1,
+
+    .1vw 0vw 1vw #d100b1, .2vw 0vw 1vw #e50b0b, .4vw 0vw 5vw #e50b0b,
+    .1vw 0vw 5vw #e50b0b, .2vw 0vw 20vw #e50b0b, .4vw 0vw 10vw #e50b0b,
+    .1vw 0vw 10vw #e50b0b, .2vw 0vw 30vw #e50b0b, .4vw 0vw 10vw #e50b0b;
+}
