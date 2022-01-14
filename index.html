@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        #settings{
+            position: absolute;
+            left: 0;
+            margin-left: 1rem;
+            
+        }
+    </style>
+
 </head>
 
 <body>
+    
     <div  class="wrapper">
         <h1 id="fheader">Super </h1>
         <h2 id="sheader">Meteor</h2>
@@ -31,19 +41,36 @@
             </filter>
             <polygon points="0,0 400,0 200,300" stroke="#36e2f8" stroke-width="3" />
         </svg>
+        
         <div class="grid"></div>
 
         <a href="#" id="button" class="neon-button">Start</a>
-    </div>
 
-    <div style="display: none;" class="levelContainer">
-        <ul>
-            <li id="easy"><a>Easy</a></li>
-            <li id="medium"><a>Medium</a></li>
-            <li id="hard"><a>Hard</a></li>
-        </ul>
+        <div id= "settings">
+            <ul >
+                <li><img src="assets/settings.png" alt="img_setting" id="img_setting" style="float: left;"  >
+                    <ul id= "sub_menu" style=" padding: 0; margin: 0;display: none;clear: left;" >
+                        <li >
+                            <label for="song1"><img src="" id="img_unmute1"></label>
+                            <input id="song1"type="range"  min="0" max="100">
+                            <audio src="assets/music.mp3" id ="mainMusic" controls style="display: none;"></audio>
+                            
+                        </li><br>
+                        <li >
+                            <label for="song2"><img src="assets/voice.png" id="img_unmute2"></label>
+                            <input id="song2"type="range" min="0" max="100">
+                            
+                            
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+        
     </div>
-
+    
+    
     <script src="src/script.js"></script>
 </body>
 
