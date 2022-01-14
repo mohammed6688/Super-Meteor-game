@@ -1,10 +1,15 @@
 body{
     background-image: url(../assets/game_bg.jpg);
+    /* background-size: 100%; */
+    /* text-align: center; */
+    /* align-content: center; */
     margin-top: 70px;
 }
 ul{
+    /* position: fixed; */
     list-style: none;
     display: inline-block;
+    
     padding-left: 0;
     border: 2px solid white;
     background-color: cadetblue;
@@ -15,17 +20,28 @@ ul li{
     font-weight: bolder;
     padding: 20px;
     margin: 50px;
+    
     border: 2px solid white;
+    /* width: max-content; */
     background-color: black;
+    
 }
 ul li a{
     margin: 50px;
     cursor: pointer;
+    /* border: 2px solid white; */
+    
 }
 ul li:hover  {
     color: black;
     background-color: aqua;
+    
+    
 }
 div{
-    text-align: center;   
+    text-align: center;
+    /* align-content: center; */
+    /* align-self: center; */
+    /* border: 2px solid white; */
+    
 }

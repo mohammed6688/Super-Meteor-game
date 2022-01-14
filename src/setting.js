@@ -8,8 +8,10 @@ easy.addEventListener('click', e => {
     window.localStorage.setItem("level","easy");
 });
 medium.addEventListener('click', e => {
+    // console.log("clicked");
     window.localStorage.setItem("level","medum");
 });
 hard.addEventListener('click', e => {
+    // console.log("clicked");
     window.localStorage.setItem("level","hard");
 });
