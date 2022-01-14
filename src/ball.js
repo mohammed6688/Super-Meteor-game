@@ -1,6 +1,7 @@
 import {detectCollision} from "/src/collisionDetection.js";
 import {heartHandling} from "/src/index.js"
 
+
 export default class Ball{
     constructor(game) {
         this.game=game;

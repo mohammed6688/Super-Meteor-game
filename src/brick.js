@@ -1,4 +1,5 @@
 import {detectCollision} from "/src/collisionDetection.js";
+let myCollisionSound = document.getElementById("collisionSound");
 
 export default class Brick{
     constructor(game,position){
@@ -17,6 +18,7 @@ export default class Brick{
         if (detectCollision(this.game.ball,this)){
             this.game.ball.speed.y=-this.game.ball.speed.y;
             this.markedForDeletion=true;
+            myCollisionSound.play();
 
             switch(this.level){
                 case 0:

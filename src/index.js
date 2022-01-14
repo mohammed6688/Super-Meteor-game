@@ -1,19 +1,21 @@
 import Game from "./game.js";
 
+var button = document.getElementById("button");
+
+var settings = document.getElementById("img_setting")
+var sub_menu = document.getElementById("audioDiv")
+var mainMusic = document.getElementById("mainMusic")
+var slider_song1 = document.getElementById("song1")
+var img_song1 = document.getElementById("img_unmute1")
+var score = document.getElementById("score");
+var maxScore = document.getElementById("maxScore");
+var back = document.getElementById("back");
+var pauseMenu =document.getElementById("neon-wrapper");
 let heart1 = document.getElementById("img_heart1");
 let heart2 = document.getElementById("img_heart2");
 let heart3 = document.getElementById("img_heart3");
 const heartImages = [heart1, heart2, heart3];
-export function heartHandling(numberOfLives) {
 
-    let i;
-    for(i=0; i<numberOfLives; i++){
-        heartImages[i].style.display = "inline-block";
-    }
-    for(; i<3; i++){
-        heartImages[i].style.display = "none";
-    }
-}
 
 var easy = document.getElementById("easy");
 var medium = document.getElementById("medium");
@@ -21,6 +23,8 @@ var hard = document.getElementById("hard");
 
 var resume = document.getElementById("resume");
 var gameOver = document.getElementById("gameOver");
+var wrapper = document.getElementById("wrapper");
+
 
 var medium = document.getElementById("medium");
 var exit = document.getElementById("exit");
@@ -30,51 +34,26 @@ let diffContainer = document.getElementById("diffContainer");
 let gameContainer = document.getElementById("game");
 
 
-gameContainer.style.display="none";
-document.getElementById("neon-wrapper").style.display="none";
-document.getElementById("score").style.display="none";
-document.getElementById("gameOver").style.display="none";
+export function heartHandling(numberOfLives) {
+
+    let i;
+    for (i = 0; i < numberOfLives; i++) {
+        heartImages[i].style.display = "inline-block";
+    }
+    for (; i < 3; i++) {
+        //heartImages[i].src = "empty_heart.png";
+        heartImages[i].style.display = "none";
+
+    }
+}
 
 
-// diffContainer.style.display="none";
-// title.style.display="none";
-
-// showhide("diffContainer")
-// showhide("title")
-//diffContainer.style.animation = 'fading 2s infinite'
-
-// unfade(body);
+gameContainer.style.display = "none";
+document.getElementById("neon-wrapper").style.display = "none";
+document.getElementById("score").style.display = "none";
+document.getElementById("gameOver").style.display = "none";
 
 
-easy.addEventListener('click', e => {
-    //put code her
-    window.localStorage.setItem("level",0);
-    gameContainer.style.display="block";
-    diffContainer.style.display="none";
-    title.style.display="none";
-});
-easy.addEventListener('click', e => {
-    //put code her
-    window.localStorage.setItem("level",0);
-    gameContainer.style.display="block";
-    diffContainer.style.display="none";
-    title.style.display="none";
-});
-medium.addEventListener('click', e => {
-    //put code here
-    //window.localStorage.setItem("level","medium");
-    window.localStorage.setItem("level",1);
-    gameContainer.style.display="block";
-    diffContainer.style.display="none";
-    title.style.display="none";
-});
-hard.addEventListener('click', e => {
-    //put code here
-    window.localStorage.setItem("level",2);
-    gameContainer.style.display="block";
-    diffContainer.style.display="none";
-    title.style.display="none";
-});
 
 
 let canvas = document.getElementById("gameScreen");
@@ -84,33 +63,60 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 // let ratio = 1.5;
 // canvas.height =canvas.width *ratio;
-const GAME_WIDTH =window.innerWidth;
-const GAME_HEIGHT =window.innerHeight;
+const GAME_WIDTH = window.innerWidth;
+const GAME_HEIGHT = window.innerHeight;
 // const GAME_HEIGHT =GAME_WIDTH*ratio;
 
 
-let game = new Game(GAME_WIDTH,GAME_HEIGHT);
+let game = new Game(GAME_WIDTH, GAME_HEIGHT);
 //game.start();
 resume.addEventListener('click', e => {
-   game.togglePause();
+    game.togglePause();
 });
 
 exit.addEventListener('click', e => {
     window.open("index.html", "_self");
- });
+});
 gameOver.addEventListener('click', e => {
     game.audio.mainPause();
-    game= new Game(GAME_WIDTH,GAME_HEIGHT);
- });
+    game = new Game(GAME_WIDTH, GAME_HEIGHT);
+});
+easy.addEventListener('click', e => {
+    window.localStorage.setItem("level", 0);
+    gameContainer.style.display = "block";
+    diffContainer.style.display = "none";
+    title.style.display = "none";
+    if(game.gameState==0){
+        game=  new Game(GAME_WIDTH, GAME_HEIGHT);
+    }
+});
 
+medium.addEventListener('click', e => {
+    window.localStorage.setItem("level", 1);
+    gameContainer.style.display = "block";
+    diffContainer.style.display = "none";
+    title.style.display = "none";
+    if(game.gameState==0){
+        game=  new Game(GAME_WIDTH, GAME_HEIGHT);
+    }
+});
+hard.addEventListener('click', e => {
+    window.localStorage.setItem("level", 2);
+    gameContainer.style.display = "block";
+    diffContainer.style.display = "none";
+    title.style.display = "none";
+    if(game.gameState==0){
+        game=  new Game(GAME_WIDTH, GAME_HEIGHT);
+    }
+});
 
-let lastTime=0;
+let lastTime = 0;
 
-function gameLoop(timestamp){
-    let deltaTime=timestamp - lastTime;
-    lastTime=timestamp;
+function gameLoop(timestamp) {
+    let deltaTime = timestamp - lastTime;
+    lastTime = timestamp;
     //console.log(timestamp)
-    ctx.clearRect(0,0,GAME_WIDTH,GAME_HEIGHT);
+    ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
     game.update(deltaTime);
     game.draw(ctx)
     requestAnimationFrame(gameLoop);
@@ -118,41 +124,111 @@ function gameLoop(timestamp){
 
 requestAnimationFrame(gameLoop);
 
-function showhide(id) {
-    if (document.getElementById) {
-      var divid = document.getElementById(id);
-      var divs = document.getElementsByClassName("hideable");
-      for (var i = 0; i < divs.length; i = i + 1) {
-        $(divs[i]).fadeOut("slow");
-      }
-      $(divid).fadeIn("slow");
+
+////////////////////// audio ////////////////////////
+
+// let myFirstEnter = localStorage.getItem("firstEnter");
+// if (myFirstEnter == null){
+//     localStorage.setItem('sliderVal', 50);
+//     localStorage.setItem("firstEnter", 1);
+// }
+
+// slider_song1.value = JSON.parse(localStorage.getItem('sliderVal'))
+// mainMusic.volume = slider_song1.value/100;
+// if(slider_song1.value == 0)
+// {
+//     img_song1.setAttribute('src','assets/mute.png')
+// }
+// else
+// {
+//     img_song1.setAttribute('src','assets/voice.png')
+// }
+
+mainMusic.autoplay = true;
+mainMusic.loop = true;
+
+
+// slider_song1.addEventListener('change', e => {
+//     var val = e.target.value;
+//     mainMusic.volume = val/100;
+//     localStorage.setItem('sliderVal', val)
+//     if(val == 0)
+//         {
+//             img_song1.setAttribute('src','assets/mute.png')
+//         }
+//     else
+//     {
+//         img_song1.setAttribute('src','assets/voice.png')
+//     }
+
+// });
+
+
+// img_song1.addEventListener('click', e => {
+    
+//     if(JSON.parse(localStorage.getItem('sliderVal')) != 0)
+//         {
+//             img_song1.setAttribute('src','assets/mute.png')
+//             localStorage.setItem('pre_sliderVal',slider_song1.value)
+//             localStorage.setItem('sliderVal',0)
+//             slider_song1.value = 0;
+//             mainMusic.volume = 0;
+//         }
+//     else{
+//         img_song1.setAttribute('src','assets/voice.png')
+//         slider_song1.value = JSON.parse(localStorage.getItem('pre_sliderVal'));
+//         localStorage.setItem('pre_sliderVal',0)
+//         localStorage.setItem('sliderVal',slider_song1.value)
+//         mainMusic.volume = slider_song1.value/100;
+//     }
+
+// });
+
+
+
+
+
+button.addEventListener('click', e => {
+    wrapper.style.display = "none"
+    title.style.display = "block"
+    diffContainer.style.display = "block"
+    back.style.display = "block"
+});
+
+back.addEventListener('click', e => {
+    if (wrapper.style.display === "none" && gameContainer.style.display === "none") {//at level chooser
+        back.style.display = "none";
+        wrapper.style.display = "flex";
+
+        title.style.display = "none"
+        diffContainer.style.display = "none"
+        console.log("yes");
+    } else {
+        wrapper.style.display = "none"
+        title.style.display = "block"
+        diffContainer.style.display = "block"
+        back.style.display = "block"
+        score.style.display = "none"
+        gameOver.style.display = "none"
+        gameContainer.style.display = "none";
+        pauseMenu.style.display="none";
+
+        game.gameState=0;
     }
-    return false;
-  }
 
-function fade(element) {
-    var op = 1;  // initial opacity
-    var timer = setInterval(function () {
-        if (op <= 0.1){
-            clearInterval(timer);
-            element.style.display = 'none';
-        }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= op * 0.1;
-    }, 50);
-}
+});
 
-function unfade(element) {
-    var op = 0.1;  // initial opacity
-    element.style.display = 'block';
-    var timer = setInterval(function () {
-        if (op >= 1){
-            clearInterval(timer);
-        }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op += op * 0.1;
-    }, 10);
-}
+settings.addEventListener('click', e => {
+
+    if (sub_menu.style.display === "block") {
+        sub_menu.style.display = "none";
+
+    } else {
+        sub_menu.style.display = "block";
+
+    }
+
+});
+
+
 

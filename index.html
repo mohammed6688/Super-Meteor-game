@@ -32,8 +32,8 @@
 </head>
 
 <body>
-    
-    <div  class="wrapper">
+
+    <div id="wrapper">
         <h1 id="fheader">Super </h1>
         <h2 id="sheader">Meteor</h2>
 
@@ -54,15 +54,14 @@
             </filter>
             <polygon points="0,0 400,0 200,300" stroke="#36e2f8" stroke-width="3" />
         </svg>
-        
+
         <div class="grid"></div>
 
-        <a href="#" id="button" class="neon-button">Start</a>
-
+        <a id="button" class="neon-button">Start</a>
 
         <div id="settings">
             <div>
-                <img src="assets/settings.png" alt="img_setting" id="img_setting" style="margin-right:1em;">
+                <img src="assets/settings.png" alt="img_setting" id="img_setting" style="margin-right:0.5em;">
             </div>
 
             <div style="display: none;" id="audioDiv">
@@ -70,6 +69,7 @@
                     <label for="song1"><img src="assets/voice.png" id="img_unmute1"></label>
                     <input id="song1" type="range" min="0" max="100">
                     <audio src="assets/music.mp3" id="mainMusic" controls style="display: none;"></audio>
+                    <audio src="assets/collision.mp3" id="collisionSound" controls style="display: none;"></audio>
                 </div>
                 <div class="slider">
                     <label for="song2"><img src="assets/voice.png" id="img_unmute2"></label>
@@ -78,18 +78,48 @@
             </div>
             
         </div>
-        
-    </div>
-    
-
-        
-        <div id="maxScore"></div>
     </div>
 
-   
+    <div id="maxScore"></div>
 
-    
-    <script src="src/script.js"></script>
+    <h1 style="display: none;" id="title">CHOOSE DIFFICULTY</h1>
+    <div style="display: none;" id="diffContainer">
+        <ul>
+            <li id="easy"><a>Easy</a></li>
+            <li id="medium"><a>Medium</a></li>
+            <li id="hard"><a>Hard</a></li>
+        </ul>
+    </div>
+    <div style="display: none;" id="score"></div>
+
+    <div style="display: none;" id="game">
+        <img id="img_ball" src="assets/giphy.gif">
+        <img id="img_brick" src="assets/brick.png">
+
+        <div style="position: absolute; margin-top: 1rem;">
+            <img id="img_heart1" width="32px" height="32px" src="assets/heart.png">
+            <img id="img_heart2" width="32px" height="32px" src="assets/heart.png">
+            <img id="img_heart3" width="32px" height="32px" src="assets/heart.png">
+        </div>
+
+        <canvas id="gameScreen"></canvas>
+    </div>
+
+    <div style="display: none;" id="neon-wrapper">
+        <div class="neon-text">PAUSE MENU</div>
+        <div id="resume" class="inner-wrapper"> RESUME</div>
+        <div id="setting" class="inner-wrapper"> SETTING</div>
+        <div id="exit" class="inner-wrapper"> EXIT</div>
+    </div>
+
+    <img id="back" width="22px" height="22px" src="assets/left_arrow.png" alt="">
+
+    <div style="display: none;" id="gameOver">
+        <h2 style="color: white;">GAME OVER</h2>
+    </div>
+
+
+    <script type="module" src="src/index.js"></script>
 </body>
 
 </html>

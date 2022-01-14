@@ -26,10 +26,7 @@ export default class Game {
         this.currentLevel = localStorage.getItem("level");
         if (this.currentLevel == null) this.currentLevel = 0;
         console.log(this.currentLevel)
-
-        this.lives=3;
-
-        
+        this.lives = 3;
 
         heartHandling(0);
         this.currentScore = 0;
@@ -45,15 +42,17 @@ export default class Game {
             this.gameState !== GAMESTATE.NEWLEVEL
         )
             return;
+
         this.currentLevel = localStorage.getItem("level");
+
         this.brick = buildLevel(this, this.levels[this.currentLevel]); //return array of objects of bricks
         this.gameObject = [this.ball, this.paddle];
         this.gameState = GAMESTATE.RUNNING;
         this.ball.reset();
 
 
-        this.audio.mainVolumeChange(0.4);
-        this.audio.mainPlay();
+        // this.audio.mainVolumeChange(0.4);
+        // this.audio.mainPlay();
 
 
         heartHandling(this.lives);
@@ -86,6 +85,7 @@ export default class Game {
             this.gameState === GAMESTATE.GAMEOVER ||
             this.gameState === GAMESTATE.MENU)
             return;
+
         this.brick = this.brick.filter(object => !object.markedForDeletion); //remove objects that have true valued of markedForDeletion
 
         [...this.gameObject, ...this.brick].forEach(obj => {
@@ -110,18 +110,16 @@ export default class Game {
         ctx.fillStyle = "red";
 
 
+        document.getElementById("score").style.display = "none";
 
-        document.getElementById("score").style.display="none";
-        let score=document.getElementById("score");
-        score.textContent=this.currentScore;
+        let score = document.getElementById("score");
+        score.textContent = this.currentScore;
         document.getElementById("gameOver").style.display = "none";
-        
 
 
-        if (this.currentScore != 0 && this.gameState!=GAMESTATE.GAMEOVER) {
-        document.getElementById("score").style.display = "block";
 
-
+        if (this.currentScore != 0 && this.gameState != GAMESTATE.GAMEOVER && document.getElementById("game").style.display === "block") {
+            document.getElementById("score").style.display = "block";
             score.textContent = this.currentScore;
         }
 
@@ -129,8 +127,8 @@ export default class Game {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
             ctx.fillStyle = "rgba(0,0,0,0.5)";
             ctx.fill();
-
         }
+
         if (this.gameState === GAMESTATE.MENU) {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
             ctx.fillStyle = "rgba(0,0,0,1)";
@@ -139,8 +137,8 @@ export default class Game {
             ctx.fillStyle = "white";
             ctx.textAlign = "center";
             ctx.fillText("Press space to start battle ", this.gameWidth / 2, this.gameHeight / 2);
-
         }
+
         if (this.gameState === GAMESTATE.GAMEOVER) {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
             ctx.fillStyle = "rgba(0,0,0,1)";
@@ -151,10 +149,73 @@ export default class Game {
             // ctx.textAlign = "center";
             // ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2);
 
-            document.getElementById("gameOver").style.display = "block";
+            if (document.getElementById("game").style.display === "block") {
+                document.getElementById("gameOver").style.display = "block";
+            }
 
 
         }
 
     }
 }
+
+
+////////////////////// collision audio ////////////////////////
+
+let myCollisionSound = document.getElementById("collisionSound");
+let slider_song2 = document.getElementById("song2")
+let img_song2 = document.getElementById("img_unmute2")
+
+let myFirstEnter_2 = localStorage.getItem("firstEnter_2");
+if (myFirstEnter_2 == null){
+    localStorage.setItem('sliderVal_2', 50);
+    localStorage.setItem("firstEnter_2", 1);
+}
+
+slider_song2.value = JSON.parse(localStorage.getItem('sliderVal_2'))
+myCollisionSound.volume = slider_song2.value/100;
+if(slider_song2.value == 0)
+{
+    img_song2.setAttribute('src','assets/mute.png')
+}
+else
+{
+    img_song2.setAttribute('src','assets/voice.png')
+}
+
+
+slider_song2.addEventListener('change', e => {
+    var val = e.target.value;
+    myCollisionSound.volume = val/100;
+    localStorage.setItem('sliderVal_2', val)
+    if(val == 0)
+        {
+            img_song2.setAttribute('src','assets/mute.png')
+        }
+    else
+    {
+        img_song2.setAttribute('src','assets/voice.png')
+    }
+
+});
+
+
+img_song2.addEventListener('click', e => {
+    
+    if(JSON.parse(localStorage.getItem('sliderVal_2')) != 0)
+        {
+            img_song2.setAttribute('src','assets/mute.png')
+            localStorage.setItem('pre_sliderVal_2',slider_song2.value)
+            localStorage.setItem('sliderVal_2',0)
+            slider_song2.value = 0;
+            myCollisionSound.volume = 0;
+        }
+    else{
+        img_song2.setAttribute('src','assets/voice.png')
+        slider_song2.value = JSON.parse(localStorage.getItem('pre_sliderVal_2'));
+        localStorage.setItem('pre_sliderVal_2',0)
+        localStorage.setItem('sliderVal_2',slider_song2.value)
+        myCollisionSound.volume = slider_song2.value/100;
+    }
+
+});
