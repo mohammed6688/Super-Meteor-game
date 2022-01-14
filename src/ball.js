@@ -9,7 +9,7 @@ export default class Ball{
         this.image=document.getElementById('img_ball');
         // this.speed={x:5, y:2}
         // this.position={x:10, y:400}
-        this.size=16;
+        this.size=32;
         this.level = JSON.parse(localStorage.getItem("level"));
         this.reset()
     }

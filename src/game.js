@@ -3,6 +3,7 @@ import InputHandler from "./input.js";
 import Ball from "./ball.js";
 import {level1,level2,level3, buildLevel} from "./levels.js";
 import {heartHandling} from "/src/index.js"
+import Music from "./music.js"
 
 const GAMESTATE = {
     PAUSE: 0,
@@ -29,7 +30,7 @@ export default class Game {
         heartHandling(0);
         this.currentScore=0;
         this.maxScore=0;
-        this.audio = new Audio('assets/main_sound.mp3');
+        this.audio = new Music();
         this.audioFlag = JSON.parse(localStorage.getItem("audioFlag"));
 
     }
@@ -47,9 +48,8 @@ export default class Game {
         this.ball.reset();
 
         if(this.audioFlag == 1){
-            this.audio.volume = 0.4;
-            this.audio.loop=true;
-            this.audio.play().then(r => console.log("played"));
+            this.audio.mainVolumeChange(0.4);
+            this.audio.mainPlay();
         }
 
         heartHandling(this.lives);
