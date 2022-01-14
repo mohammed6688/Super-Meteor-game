@@ -20,6 +20,8 @@ var medium = document.getElementById("medium");
 var hard = document.getElementById("hard");
 
 var resume = document.getElementById("resume");
+var gameOver = document.getElementById("gameOver");
+
 var medium = document.getElementById("medium");
 var exit = document.getElementById("exit");
 
@@ -31,6 +33,8 @@ let gameContainer = document.getElementById("game");
 gameContainer.style.display="none";
 document.getElementById("neon-wrapper").style.display="none";
 document.getElementById("score").style.display="none";
+document.getElementById("gameOver").style.display="none";
+
 
 // diffContainer.style.display="none";
 // title.style.display="none";
@@ -94,6 +98,10 @@ resume.addEventListener('click', e => {
 exit.addEventListener('click', e => {
     window.open("index.html", "_self");
  });
+gameOver.addEventListener('click', e => {
+    game= new Game(GAME_WIDTH,GAME_HEIGHT);
+ });
+
 
 let lastTime=0;
 

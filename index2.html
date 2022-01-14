@@ -110,7 +110,7 @@
 			align-items: center;
 			text-align: center;
 			margin: 1.5rem;
- 			font-size: 5rem;
+			font-size: 5rem;
 			color: #ffd8d8;
 			padding: 0 3.5rem 0 3.5rem;
 			box-shadow:
@@ -122,10 +122,10 @@
 				inset 0 0 0.4vw 0.2vw #e97272,
 				inset 0 0 0.5vw 0.2vw #fff7f7;
 			border-radius: 1.5rem;
-			
+
 
 		}
-		
+
 
 		.inner-wrapper:hover {
 			color: var(--clr-bg);
@@ -178,6 +178,237 @@
 				.1vw 0vw 5vw #e50b0b, .2vw 0vw 20vw #e50b0b, .4vw 0vw 10vw #e50b0b,
 				.1vw 0vw 10vw #e50b0b, .2vw 0vw 30vw #e50b0b, .4vw 0vw 10vw #e50b0b;
 		}
+
+
+
+
+		#gameOver {
+			width: 100%;
+			top: 40%;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			font-size: 40px;
+
+		}
+
+		#gameOver:hover:before,
+		#gameOver:hover:after {
+			cursor: pointer;
+			position: absolute;
+			content: 'REPLAY';
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			z-index: +1;
+		}
+
+		#gameOver:hover:before {
+			cursor: pointer;
+			top: 49.5%;
+			left: 49.5%;
+			color: rgba(233, 30, 99, 0.8);
+			-webkit-animation: distort1 300ms linear infinite;
+			animation: distort1 300ms linear infinite;
+		}
+
+		#gameOver:hover:after {
+			top: 50.5%;
+			left: 50.5%;
+			color: rgba(3, 169, 244, 0.8);
+			-webkit-animation: distort2 300ms linear infinite;
+			animation: distort2 300ms linear infinite;
+		}
+
+		@-webkit-keyframes distort1 {
+			0% {
+				top: 49.5%;
+				left: 49.5%;
+			}
+
+			12.5% {
+				top: 49.5%;
+				left: 50%;
+			}
+
+			25% {
+				top: 49.5%;
+				left: 50.5%;
+			}
+
+			37.5% {
+				top: 50%;
+				left: 50.5%;
+			}
+
+			50% {
+				top: 50.5%;
+				left: 50.5%;
+			}
+
+			62.5% {
+				top: 50.5%;
+				left: 50%;
+			}
+
+			75% {
+				top: 50.5%;
+				left: 49.5%;
+			}
+
+			87.5% {
+				top: 50%;
+				left: 49.5%;
+			}
+
+			100% {
+				top: 49.5%;
+				left: 49.5%;
+			}
+		}
+
+		@keyframes distort1 {
+			0% {
+				top: 49.5%;
+				left: 49.5%;
+			}
+
+			12.5% {
+				top: 49.5%;
+				left: 50%;
+			}
+
+			25% {
+				top: 49.5%;
+				left: 50.5%;
+			}
+
+			37.5% {
+				top: 50%;
+				left: 50.5%;
+			}
+
+			50% {
+				top: 50.5%;
+				left: 50.5%;
+			}
+
+			62.5% {
+				top: 50.5%;
+				left: 50%;
+			}
+
+			75% {
+				top: 50.5%;
+				left: 49.5%;
+			}
+
+			87.5% {
+				top: 50%;
+				left: 49.5%;
+			}
+
+			100% {
+				top: 49.5%;
+				left: 49.5%;
+			}
+		}
+
+		@-webkit-keyframes distort2 {
+			0% {
+				top: 50.5%;
+				left: 50.5%;
+			}
+
+			12.5% {
+				top: 50%;
+				left: 50.5%;
+			}
+
+			25% {
+				top: 49.5%;
+				left: 50.5%;
+			}
+
+			37.5% {
+				top: 49.5%;
+				left: 50%;
+			}
+
+			50% {
+				top: 49.5%;
+				left: 49.5%;
+			}
+
+			62.5% {
+				top: 50%;
+				left: 49.5%;
+			}
+
+			75% {
+				top: 50.5%;
+				left: 49.5%;
+			}
+
+			87.5% {
+				top: 50.5%;
+				left: 50%;
+			}
+
+			100% {
+				top: 50.5%;
+				left: 50.5%;
+			}
+		}
+
+		@keyframes distort2 {
+			0% {
+				top: 50.5%;
+				left: 50.5%;
+			}
+
+			12.5% {
+				top: 50%;
+				left: 50.5%;
+			}
+
+			25% {
+				top: 49.5%;
+				left: 50.5%;
+			}
+
+			37.5% {
+				top: 49.5%;
+				left: 50%;
+			}
+
+			50% {
+				top: 49.5%;
+				left: 49.5%;
+			}
+
+			62.5% {
+				top: 50%;
+				left: 49.5%;
+			}
+
+			75% {
+				top: 50.5%;
+				left: 49.5%;
+			}
+
+			87.5% {
+				top: 50.5%;
+				left: 50%;
+			}
+
+			100% {
+				top: 50.5%;
+				left: 50.5%;
+			}
+		}
+
+		/*# sourceMappingURL=style.css.map */
 	</style>
 </head>
 
@@ -214,9 +445,9 @@
 	</div>
 
 	<div id="score"></div>
-	<!-- <div id="gameOver"> GAME OVER
-
-	</div> -->
+	<div id="gameOver">
+		<h2>GAME OVER</h2>
+	</div>
 	<script type="module" src="src/index.js"></script>
 </body>
 

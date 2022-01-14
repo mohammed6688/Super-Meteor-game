@@ -26,7 +26,7 @@ export default class Game {
         this.currentLevel= localStorage.getItem("level");
         if(this.currentLevel == null)this.currentLevel = 0;
         console.log(this.currentLevel)
-        this.lives=3;
+        this.lives=1;
         heartHandling(0);
         this.currentScore=0;
         this.maxScore=0;
@@ -54,13 +54,30 @@ export default class Game {
 
         heartHandling(this.lives);
     }
-
+    rematch(){
+        this.gameState = GAMESTATE.RUNNING;
+        this.ball = new Ball(this);
+        this.paddle = new Paddle(this);
+        new InputHandler(this.paddle, this);
+        this.gameObject = [];
+        this.brick = [];
+        this.levels = [level1,level2,level3];
+        this.currentLevel= localStorage.getItem("level");
+        if(this.currentLevel == null)this.currentLevel = 0;
+        console.log(this.currentLevel)
+        this.lives=1;
+        heartHandling(0);
+        this.currentScore=0;
+        this.maxScore=0;
+        this.audio = new Music();
+        this.audioFlag = JSON.parse(localStorage.getItem("audioFlag"));
+    }
     togglePause() {
         if (this.gameState === GAMESTATE.PAUSE) {
             this.gameState = GAMESTATE.RUNNING;
             document.getElementById("neon-wrapper").style.display="none"
             this.audio.mainVolumeChange(0.4);
-        } else if (this.gameState === GAMESTATE.RUNNING){
+        } else if (this.gameState === GAMESTATE.RUNNING||this.gameState === GAMESTATE.GAMEOVER){
             this.gameState = GAMESTATE.PAUSE;
             document.getElementById("neon-wrapper").style.display="flex"
             this.audio.mainVolumeChange(0.2);
@@ -100,6 +117,8 @@ export default class Game {
 
         let num =this.currentScore.toString().length
         document.getElementById("score").style.display="block";
+        document.getElementById("gameOver").style.display="none";
+
         let score=document.getElementById("score");
         score.textContent=this.currentScore;
         // switch (num) {
@@ -145,10 +164,11 @@ export default class Game {
             ctx.rect(0,0,this.gameWidth,this.gameHeight);
             ctx.fillStyle="rgba(0,0,0,1)";
             ctx.fill();
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2);
+            // ctx.font = "30px Arial";
+            // ctx.fillStyle = "white";
+            // ctx.textAlign = "center";
+            // ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2);
+            document.getElementById("gameOver").style.display="block";
 
         }
 
