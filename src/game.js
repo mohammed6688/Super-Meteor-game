@@ -29,7 +29,7 @@ export default class Game {
 
         this.lives=3;
 
-        this.lives = 1;
+        
 
         heartHandling(0);
         this.currentScore = 0;
@@ -45,7 +45,7 @@ export default class Game {
             this.gameState !== GAMESTATE.NEWLEVEL
         )
             return;
-
+        this.currentLevel = localStorage.getItem("level");
         this.brick = buildLevel(this, this.levels[this.currentLevel]); //return array of objects of bricks
         this.gameObject = [this.ball, this.paddle];
         this.gameState = GAMESTATE.RUNNING;

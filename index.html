@@ -8,11 +8,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
     <style>
-        #settings{
+        #settings {
             position: absolute;
             left: 0;
             margin-left: 1rem;
-            
+            margin-top: 1rem;
+            display: flex;
+            text-align: center;
+            align-items: center;
+        }
+
+        .slider{
+            display: flex;
+        }
+
+        #audio{
+            display: none;
+            list-style: none;
+            padding-left: 0;
         }
     </style>
 
@@ -47,26 +60,23 @@
         <a href="#" id="button" class="neon-button">Start</a>
 
 
-        <div id= "settings">
-            <ul >
-                <li><img src="assets/settings.png" alt="img_setting" id="img_setting" style="float: left;"  >
-                    <ul id= "sub_menu" style=" padding: 0; margin: 0;display: none;clear: left;" >
-                        <li >
-                            <label for="song1"><img src="" id="img_unmute1"></label>
-                            <input id="song1"type="range"  min="0" max="100">
-                            <audio src="assets/music.mp3" id ="mainMusic" controls style="display: none;"></audio>
-                            
-                        </li><br>
-                        <li >
-                            <label for="song2"><img src="assets/voice.png" id="img_unmute2"></label>
-                            <input id="song2"type="range" min="0" max="100">
-                            
-                            
-                        </li>
-                    </ul>
-                </li>
-                
-            </ul>
+        <div id="settings">
+            <div>
+                <img src="assets/settings.png" alt="img_setting" id="img_setting" style="margin-right:1em;">
+            </div>
+
+            <div style="display: none;" id="audioDiv">
+                <div class="slider">
+                    <label for="song1"><img src="assets/voice.png" id="img_unmute1"></label>
+                    <input id="song1" type="range" min="0" max="100">
+                    <audio src="assets/music.mp3" id="mainMusic" controls style="display: none;"></audio>
+                </div>
+                <div class="slider">
+                    <label for="song2"><img src="assets/voice.png" id="img_unmute2"></label>
+                    <input id="song2" type="range" min="0" max="100">
+                </div>
+            </div>
+            
         </div>
         
     </div>
