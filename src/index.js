@@ -19,12 +19,19 @@ var easy = document.getElementById("easy");
 var medium = document.getElementById("medium");
 var hard = document.getElementById("hard");
 
+var resume = document.getElementById("resume");
+var medium = document.getElementById("medium");
+var exit = document.getElementById("exit");
+
 let title = document.getElementById("title");
 let diffContainer = document.getElementById("diffContainer");
 let gameContainer = document.getElementById("game");
 
 
 gameContainer.style.display="none";
+document.getElementById("neon-wrapper").style.display="none";
+document.getElementById("score").style.display="none";
+
 // diffContainer.style.display="none";
 // title.style.display="none";
 
@@ -33,6 +40,15 @@ gameContainer.style.display="none";
 //diffContainer.style.animation = 'fading 2s infinite'
 
 // unfade(body);
+
+
+easy.addEventListener('click', e => {
+    //put code her
+    window.localStorage.setItem("level",0);
+    gameContainer.style.display="block";
+    diffContainer.style.display="none";
+    title.style.display="none";
+});
 easy.addEventListener('click', e => {
     //put code her
     window.localStorage.setItem("level",0);
@@ -71,7 +87,13 @@ const GAME_HEIGHT =window.innerHeight;
 
 let game = new Game(GAME_WIDTH,GAME_HEIGHT);
 //game.start();
+resume.addEventListener('click', e => {
+   game.togglePause();
+});
 
+exit.addEventListener('click', e => {
+    window.open("index.html", "_self");
+ });
 
 let lastTime=0;
 

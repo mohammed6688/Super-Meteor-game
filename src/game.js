@@ -58,8 +58,12 @@ export default class Game {
     togglePause() {
         if (this.gameState === GAMESTATE.PAUSE) {
             this.gameState = GAMESTATE.RUNNING;
-        } else {
+            document.getElementById("neon-wrapper").style.display="none"
+            this.audio.mainVolumeChange(0.4);
+        } else if (this.gameState === GAMESTATE.RUNNING){
             this.gameState = GAMESTATE.PAUSE;
+            document.getElementById("neon-wrapper").style.display="flex"
+            this.audio.mainVolumeChange(0.2);
         }
 
 
@@ -95,33 +99,36 @@ export default class Game {
         ctx.fillStyle = "red";
 
         let num =this.currentScore.toString().length
-        switch (num) {
-            case 2:
-                ctx.fillText(this.currentScore, 35, 30);
-                break;
-            case 3:
-                ctx.fillText(this.currentScore, 35, 30);
-                break;
-            case 4:
-                ctx.fillText(this.currentScore, 40, 30);
-                break;
-            case 5:
-                ctx.fillText(this.currentScore, 45, 30);
-                break;
-            default:
-                ctx.fillText(this.currentScore, 35, 30);
-                break;
+        document.getElementById("score").style.display="block";
+        let score=document.getElementById("score");
+        score.textContent=this.currentScore;
+        // switch (num) {
+        //     case 2:
+        //         ctx.fillText(this.currentScore, 35, 30);
+        //         break;
+        //     case 3:
+        //         ctx.fillText(this.currentScore, 35, 30);
+        //         break;
+        //     case 4:
+        //         ctx.fillText(this.currentScore, 40, 30);
+        //         break;
+        //     case 5:
+        //         ctx.fillText(this.currentScore, 45, 30);
+        //         break;
+        //     default:
+        //         ctx.fillText(this.currentScore, 35, 30);
+        //         break;
 
-        }
+        // }
 
         if (this.gameState===GAMESTATE.PAUSE){
             ctx.rect(0,0,this.gameWidth,this.gameHeight);
             ctx.fillStyle="rgba(0,0,0,0.5)";
             ctx.fill();
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight / 2);
+            // ctx.font = "30px Arial";
+            // ctx.fillStyle = "white";
+            // ctx.textAlign = "center";
+            // ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight / 2);
 
         }
         if (this.gameState===GAMESTATE.MENU){
