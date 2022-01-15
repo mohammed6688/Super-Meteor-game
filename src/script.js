@@ -24,7 +24,8 @@ else
 {
     img_song1.setAttribute('src','assets/voice.png')
 }
-// var flag_mute_unmute =1;
+
+ var flag_mute_unmute =1;
 mainMusic.autoplay = true
 mainMusic.loop = true
 button.addEventListener('click', e => {

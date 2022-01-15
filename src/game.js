@@ -26,9 +26,6 @@ export default class Game {
         this.currentLevel = localStorage.getItem("level");
         if (this.currentLevel == null) this.currentLevel = 0;
         console.log(this.currentLevel)
-
-        this.lives=3;
-
         this.lives = 1;
 
         heartHandling(0);
@@ -46,14 +43,16 @@ export default class Game {
         )
             return;
 
+        this.currentLevel = localStorage.getItem("level");
+
         this.brick = buildLevel(this, this.levels[this.currentLevel]); //return array of objects of bricks
         this.gameObject = [this.ball, this.paddle];
         this.gameState = GAMESTATE.RUNNING;
         this.ball.reset();
 
 
-        this.audio.mainVolumeChange(0.4);
-        this.audio.mainPlay();
+        // this.audio.mainVolumeChange(0.4);
+        // this.audio.mainPlay();
 
 
         heartHandling(this.lives);
@@ -110,18 +109,16 @@ export default class Game {
         ctx.fillStyle = "red";
 
 
+        document.getElementById("score").style.display = "none";
 
-        document.getElementById("score").style.display="none";
-        let score=document.getElementById("score");
-        score.textContent=this.currentScore;
+        let score = document.getElementById("score");
+        score.textContent = this.currentScore;
         document.getElementById("gameOver").style.display = "none";
-        
 
 
-        if (this.currentScore != 0 && this.gameState!=GAMESTATE.GAMEOVER) {
-        document.getElementById("score").style.display = "block";
 
-
+        if (this.currentScore != 0 && this.gameState != GAMESTATE.GAMEOVER && document.getElementById("game").style.display === "block") {
+            document.getElementById("score").style.display = "block";
             score.textContent = this.currentScore;
         }
 
@@ -129,8 +126,8 @@ export default class Game {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
             ctx.fillStyle = "rgba(0,0,0,0.5)";
             ctx.fill();
-
         }
+
         if (this.gameState === GAMESTATE.MENU) {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
             ctx.fillStyle = "rgba(0,0,0,1)";
@@ -139,8 +136,8 @@ export default class Game {
             ctx.fillStyle = "white";
             ctx.textAlign = "center";
             ctx.fillText("Press space to start battle ", this.gameWidth / 2, this.gameHeight / 2);
-
         }
+
         if (this.gameState === GAMESTATE.GAMEOVER) {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
             ctx.fillStyle = "rgba(0,0,0,1)";
@@ -151,7 +148,9 @@ export default class Game {
             // ctx.textAlign = "center";
             // ctx.fillText("GAME OVER", this.gameWidth / 2, this.gameHeight / 2);
 
-            document.getElementById("gameOver").style.display = "block";
+            if (document.getElementById("game").style.display === "block") {
+                document.getElementById("gameOver").style.display = "block";
+            }
 
 
         }
