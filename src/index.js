@@ -71,7 +71,6 @@ const GAME_HEIGHT = window.innerHeight;
 
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.audio.mainPlay();
 //game.start();
 resume.addEventListener('click', e => {
     game.togglePause();
@@ -209,6 +208,11 @@ var flag_mute_unmute = 1;
 // mainMusic.autoplay = true
 // mainMusic.loop = true
 
+document.addEventListener("mousemove",e=>{
+    //console.log("ss");
+game.audio.mainPlay();
+
+})
 
 button.addEventListener('click', e => {
     wrapper.style.display = "none"
