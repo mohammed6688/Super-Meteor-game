@@ -17,9 +17,10 @@ export default class InputHandler{
             }
 
         });
-        document.addEventListener('mousedown',e=>{
-            game.start();
-        })
+        // document.addEventListener('mousedown',e=>{
+        //     game.start();
+        // });
+
         document.addEventListener('keyup',e=>{
             switch (e.keyCode){
                 case 37:

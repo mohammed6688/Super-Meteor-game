@@ -108,7 +108,7 @@ hard.addEventListener('click', e => {
     diffContainer.style.display = "none";
     title.style.display = "none";
     if(game.gameState==0){
-        game=  new Game(GAME_WIDTH, GAME_HEIGHT);
+        game=  new Game(GAME_WIDTH, GAME_HEIGHT,audio);
     }
 });
 

@@ -16,7 +16,7 @@ const GAMESTATE = {
     NEWLEVEL: 4
 }
 export default class Game {
-    constructor(gameWidth, gameHeight) {
+    constructor(gameWidth, gameHeight,mainaudio) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
         this.gameState = GAMESTATE.MENU;
@@ -31,7 +31,7 @@ export default class Game {
         console.log(this.currentLevel)
         this.lives = 1;
         this.lives = 3;
-
+        this.mainaud=mainaudio;
         heartHandling(0);
         this.currentScore = 0;
         this.maxScore = 0;
@@ -198,7 +198,9 @@ slider_song1.addEventListener('change', e => {
     console.log("yes yes");
     var val = e.target.value;
     mainMusic.volume = val / 100;
-    audio.mainVolumeChange( val / 100);
+    mainaud.mainVolume= val / 100;
+
+    mainaud.mainVolumeChange( val / 100);
     localStorage.setItem('sliderVal', val)
     if (val == 0) {
         img_song1.setAttribute('src', 'assets/mute.png')
