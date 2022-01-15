@@ -1,0 +1,36 @@
+body {
+  background-image: url(../assets/game_bg.jpg);
+  margin-top: 70px;
+}
+
+ul {
+  list-style: none;
+  display: inline-block;
+  padding-left: 0;
+  border: 2px solid white;
+  background-color: cadetblue;
+}
+
+ul li {
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  padding: 20px;
+  margin: 50px;
+  border: 2px solid white;
+  background-color: black;
+}
+
+ul li a {
+  margin: 50px;
+  cursor: pointer;
+}
+
+ul li:hover {
+  color: black;
+  background-color: aqua;
+}
+
+div {
+  text-align: center;
+}

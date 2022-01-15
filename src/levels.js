@@ -7,7 +7,7 @@ export function buildLevel(game, level) {
             if (brick === 1) {
                 let position = {
                     x: game.gameWidth*0.05 * brickIndex,
-                    y: 10+ game.gameHeight*0.05 * rowIndex
+                    y: 30+ game.gameHeight*0.05 * rowIndex
                 };
                 bricks.push(new Brick(game, position));
             }

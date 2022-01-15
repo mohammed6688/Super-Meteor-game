@@ -33,11 +33,18 @@ button.addEventListener('click', e => {
     window.open("index2.html", "_self");
 
 });
-
 settings.addEventListener('click', e => {
-    sub_menu.style.display = "block";
+
+    if (sub_menu.style.display === "block") {
+        sub_menu.style.display = "none";
+
+    } else {
+        sub_menu.style.display = "block";
+
+    }
 
 });
+ 
 
 slider_song1.addEventListener('change', e => {
     var val = e.target.value;

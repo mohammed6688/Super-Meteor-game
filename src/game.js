@@ -27,6 +27,7 @@ export default class Game {
         if (this.currentLevel == null) this.currentLevel = 0;
         console.log(this.currentLevel)
         this.lives = 1;
+        this.lives = 3;
 
         heartHandling(0);
         this.currentScore = 0;
@@ -85,6 +86,7 @@ export default class Game {
             this.gameState === GAMESTATE.GAMEOVER ||
             this.gameState === GAMESTATE.MENU)
             return;
+
         this.brick = this.brick.filter(object => !object.markedForDeletion); //remove objects that have true valued of markedForDeletion
 
         [...this.gameObject, ...this.brick].forEach(obj => {
@@ -157,3 +159,64 @@ export default class Game {
 
     }
 }
+
+
+////////////////////// collision audio ////////////////////////
+
+let myCollisionSound = document.getElementById("collisionSound");
+let slider_song2 = document.getElementById("song2")
+let img_song2 = document.getElementById("img_unmute2")
+
+let myFirstEnter_2 = localStorage.getItem("firstEnter_2");
+if (myFirstEnter_2 == null){
+    localStorage.setItem('sliderVal_2', 50);
+    localStorage.setItem("firstEnter_2", 1);
+}
+
+slider_song2.value = JSON.parse(localStorage.getItem('sliderVal_2'))
+myCollisionSound.volume = slider_song2.value/100;
+if(slider_song2.value == 0)
+{
+    img_song2.setAttribute('src','assets/mute.png')
+}
+else
+{
+    img_song2.setAttribute('src','assets/voice.png')
+}
+
+
+slider_song2.addEventListener('change', e => {
+    var val = e.target.value;
+    myCollisionSound.volume = val/100;
+    localStorage.setItem('sliderVal_2', val)
+    if(val == 0)
+        {
+            img_song2.setAttribute('src','assets/mute.png')
+        }
+    else
+    {
+        img_song2.setAttribute('src','assets/voice.png')
+    }
+
+});
+
+
+img_song2.addEventListener('click', e => {
+    
+    if(JSON.parse(localStorage.getItem('sliderVal_2')) != 0)
+        {
+            img_song2.setAttribute('src','assets/mute.png')
+            localStorage.setItem('pre_sliderVal_2',slider_song2.value)
+            localStorage.setItem('sliderVal_2',0)
+            slider_song2.value = 0;
+            myCollisionSound.volume = 0;
+        }
+    else{
+        img_song2.setAttribute('src','assets/voice.png')
+        slider_song2.value = JSON.parse(localStorage.getItem('pre_sliderVal_2'));
+        localStorage.setItem('pre_sliderVal_2',0)
+        localStorage.setItem('sliderVal_2',slider_song2.value)
+        myCollisionSound.volume = slider_song2.value/100;
+    }
+
+});

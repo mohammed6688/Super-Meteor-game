@@ -128,7 +128,6 @@ requestAnimationFrame(gameLoop);
 
 
 
-
 // let maxS = JSON.parse(localStorage.getItem("maxScore"));
 // if(maxS!=null){
 //     maxScore.textContent="Max Score \n"+ maxS;
@@ -143,6 +142,114 @@ if (slider_song1.value == 0) {
 else {
     img_song1.setAttribute('src', 'assets/voice.png')
 }
+
+
+////////////////////// audio ////////////////////////
+
+// let myFirstEnter = localStorage.getItem("firstEnter");
+// if (myFirstEnter == null){
+//     localStorage.setItem('sliderVal', 50);
+//     localStorage.setItem("firstEnter", 1);
+// }
+
+// slider_song1.value = JSON.parse(localStorage.getItem('sliderVal'))
+// mainMusic.volume = slider_song1.value/100;
+// if(slider_song1.value == 0)
+// {
+//     img_song1.setAttribute('src','assets/mute.png')
+// }
+// else
+// {
+//     img_song1.setAttribute('src','assets/voice.png')
+// }
+
+mainMusic.autoplay = true;
+mainMusic.loop = true;
+
+
+// slider_song1.addEventListener('change', e => {
+//     var val = e.target.value;
+//     mainMusic.volume = val/100;
+//     localStorage.setItem('sliderVal', val)
+//     if(val == 0)
+//         {
+//             img_song1.setAttribute('src','assets/mute.png')
+//         }
+//     else
+//     {
+//         img_song1.setAttribute('src','assets/voice.png')
+//     }
+
+// });
+
+
+// img_song1.addEventListener('click', e => {
+    
+//     if(JSON.parse(localStorage.getItem('sliderVal')) != 0)
+//         {
+//             img_song1.setAttribute('src','assets/mute.png')
+//             localStorage.setItem('pre_sliderVal',slider_song1.value)
+//             localStorage.setItem('sliderVal',0)
+//             slider_song1.value = 0;
+//             mainMusic.volume = 0;
+//         }
+//     else{
+//         img_song1.setAttribute('src','assets/voice.png')
+//         slider_song1.value = JSON.parse(localStorage.getItem('pre_sliderVal'));
+//         localStorage.setItem('pre_sliderVal',0)
+//         localStorage.setItem('sliderVal',slider_song1.value)
+//         mainMusic.volume = slider_song1.value/100;
+//     }
+
+// });
+
+
+
+
+
+button.addEventListener('click', e => {
+    wrapper.style.display = "none"
+    title.style.display = "block"
+    diffContainer.style.display = "block"
+    back.style.display = "block"
+});
+
+back.addEventListener('click', e => {
+    if (wrapper.style.display === "none" && gameContainer.style.display === "none") {//at level chooser
+        back.style.display = "none";
+        wrapper.style.display = "flex";
+
+        title.style.display = "none"
+        diffContainer.style.display = "none"
+        console.log("yes");
+    } else {
+        wrapper.style.display = "none"
+        title.style.display = "block"
+        diffContainer.style.display = "block"
+        back.style.display = "block"
+        score.style.display = "none"
+        gameOver.style.display = "none"
+        gameContainer.style.display = "none";
+        pauseMenu.style.display="none";
+
+        game.gameState=0;
+    }
+
+});
+
+settings.addEventListener('click', e => {
+
+    if (sub_menu.style.display === "block") {
+        sub_menu.style.display = "none";
+
+    } else {
+        sub_menu.style.display = "block";
+
+    }
+
+});
+
+
 
 var flag_mute_unmute = 1;
 mainMusic.autoplay = true
