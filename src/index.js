@@ -5,7 +5,7 @@ var button = document.getElementById("button");
 
 var settings = document.getElementById("img_setting")
 var sub_menu = document.getElementById("audioDiv")
-var mainMusic = document.getElementById("mainMusic")
+// var mainMusic = document.getElementById("mainMusic")
 var slider_song1 = document.getElementById("song1")
 var img_song1 = document.getElementById("img_unmute1")
 var score = document.getElementById("score");
@@ -71,6 +71,7 @@ const GAME_HEIGHT = window.innerHeight;
 
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+game.audio.mainPlay();
 //game.start();
 resume.addEventListener('click', e => {
     game.togglePause();
@@ -108,7 +109,7 @@ hard.addEventListener('click', e => {
     diffContainer.style.display = "none";
     title.style.display = "none";
     if(game.gameState==0){
-        game=  new Game(GAME_WIDTH, GAME_HEIGHT,audio);
+        game=  new Game(GAME_WIDTH, GAME_HEIGHT);
     }
 });
 
@@ -205,17 +206,18 @@ else {
 
 
 var flag_mute_unmute = 1;
-mainMusic.autoplay = true
-mainMusic.loop = true
+// mainMusic.autoplay = true
+// mainMusic.loop = true
+
 
 button.addEventListener('click', e => {
     wrapper.style.display = "none"
     title.style.display = "block"
     diffContainer.style.display = "block"
     back.style.display = "block"
-    if(mainMusic.paused){
-        audio.mainPlay();
-    }
+    // if(mainMusic.paused){
+    //     audio.mainPlay();
+    // }
 });
 
 back.addEventListener('click', e => {
@@ -225,7 +227,6 @@ back.addEventListener('click', e => {
 
         title.style.display = "none"
         diffContainer.style.display = "none"
-        console.log("yes");
     } else {
         wrapper.style.display = "none"
         title.style.display = "block"
@@ -256,7 +257,7 @@ settings.addEventListener('click', e => {
 slider_song1.addEventListener('change', e => {
     var val = e.target.value;
 
-    mainMusic.volume = val / 100;
+    //mainMusic.volume = val / 100;
     audio.mainVolumeChange( val / 100);
 
     localStorage.setItem('sliderVal', val)
@@ -286,7 +287,7 @@ canvas.addEventListener("mousedown",e=>{
         game.paddle.moveLeft();
 
     }
-})
+});
 
 canvas.addEventListener("mouseup",e=>{
     if(e.offsetX>game.paddle.position.x+game.paddle.width/2){
@@ -385,4 +386,11 @@ img_song2.addEventListener('click', e => {
     }
 
 });
+
+
+
+
+
+
+
 

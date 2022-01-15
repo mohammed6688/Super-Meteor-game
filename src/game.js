@@ -6,7 +6,15 @@ import { heartHandling } from "/src/index.js"
 import Music from "./music.js"
 
 
-let audio = new Music();
+//let audio = new Music();
+var flag_mute_unmute = 1;
+let slider_song2 = document.getElementById("setting_song2")
+let img_song2 = document.getElementById("setting_unmute2")
+var slider_song1 = document.getElementById("setting_song1")
+var img_song1 = document.getElementById("setting_unmute1")
+
+let myFirstEnter_2 = localStorage.getItem("firstEnter_2");
+
 
 const GAMESTATE = {
     PAUSE: 0,
@@ -16,7 +24,7 @@ const GAMESTATE = {
     NEWLEVEL: 4
 }
 export default class Game {
-    constructor(gameWidth, gameHeight,mainaudio) {
+    constructor(gameWidth, gameHeight) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
         this.gameState = GAMESTATE.MENU;
@@ -31,13 +39,111 @@ export default class Game {
         console.log(this.currentLevel)
         this.lives = 1;
         this.lives = 3;
-        this.mainaud=mainaudio;
         heartHandling(0);
         this.currentScore = 0;
         this.maxScore = 0;
         this.audio = new Music();
         this.audioFlag = JSON.parse(localStorage.getItem("audioFlag"));
+        // if(audio.mainMusic.paused){
+        //         audio.mainPlay();
+        //     }
 
+
+        
+if (myFirstEnter_2 == null) {
+    localStorage.setItem('sliderVal_2', 50);
+    localStorage.setItem("firstEnter_2", 1);
+}
+
+slider_song2.value = JSON.parse(localStorage.getItem('sliderVal_2'))
+//myCollisionSound.volume = slider_song2.value/100;
+if(slider_song2.value!=null){
+this.audio.sfxVolumeChange(slider_song2.value / 100);
+
+
+}
+if (slider_song2.value == 0) {
+    img_song2.setAttribute('src', 'assets/mute.png')
+}
+else {
+    img_song2.setAttribute('src', 'assets/voice.png')
+}
+
+slider_song1.addEventListener('change', e => {
+    console.log("yes yes");
+    var val = e.target.value;
+    this.audio.mainVolumeChange( val / 100);
+
+    localStorage.setItem('sliderVal', val)
+    if (val == 0) {
+        img_song1.setAttribute('src', 'assets/mute.png')
+        flag_mute_unmute = 0;
+    }
+    else {
+        img_song1.setAttribute('src', 'assets/voice.png')
+        flag_mute_unmute = 1;
+    }
+
+});
+
+img_song1.addEventListener('click', e => {
+
+    if (JSON.parse(localStorage.getItem('sliderVal')) == 0 && JSON.parse(localStorage.getItem('pre_sliderVal')) != 0) {
+        img_song1.setAttribute('src', 'assets/mute.png')
+        localStorage.setItem('pre_sliderVal', slider_song1.value)
+        localStorage.setItem('sliderVal', 0)
+        slider_song1.value = 0;
+        flag_mute_unmute = 0;
+    }
+    else {
+        img_song1.setAttribute('src', 'assets/voice.png')
+        slider_song1.value = JSON.parse(localStorage.getItem('pre_sliderVal'));
+        localStorage.setItem('pre_sliderVal', 0)
+        localStorage.setItem('sliderVal', slider_song1.value)
+        flag_mute_unmute = 1;
+    }
+
+});
+
+slider_song2.addEventListener('change', e => {
+    console.log("yes");
+    var val = e.target.value;
+    this.audio.sfxVolumeChange(val / 100);
+
+    //myCollisionSound.volume = val / 100;
+    localStorage.setItem('sliderVal_2', val)
+    if (val == 0) {
+        img_song2.setAttribute('src', 'assets/mute.png')
+    }
+    else {
+        img_song2.setAttribute('src', 'assets/voice.png')
+    }
+
+});
+
+
+img_song2.addEventListener('click', e => {
+
+    if (JSON.parse(localStorage.getItem('sliderVal_2')) != 0) {
+        img_song2.setAttribute('src', 'assets/mute.png')
+        localStorage.setItem('pre_sliderVal_2', slider_song2.value)
+        localStorage.setItem('sliderVal_2', 0)
+        slider_song2.value = 0;
+        this.audio.sfxVolumeChange(0);
+
+        // myCollisionSound.volume = 0;
+    }
+    else {
+        img_song2.setAttribute('src', 'assets/voice.png')
+        slider_song2.value = JSON.parse(localStorage.getItem('pre_sliderVal_2'));
+        localStorage.setItem('pre_sliderVal_2', 0)
+        localStorage.setItem('sliderVal_2', slider_song2.value)
+        this.audio.sfxVolumeChange(slider_song2.value / 100);
+
+        //myCollisionSound.volume = slider_song2.value / 100;
+    }
+
+});
     }
 
     start() {
@@ -54,7 +160,6 @@ export default class Game {
         this.gameState = GAMESTATE.RUNNING;
         this.ball.reset();
 
-
         // this.audio.mainVolumeChange(0.4);
         // this.audio.mainPlay();
 
@@ -68,13 +173,13 @@ export default class Game {
         if (this.gameState === GAMESTATE.PAUSE) {
             this.gameState = GAMESTATE.RUNNING;
             document.getElementById("neon-wrapper").style.display = "none"
-            this.audio.mainVolumeChange(0.4);
+            //this.audio.mainVolumeChange(0.4);
 
         } else if (this.gameState === GAMESTATE.RUNNING || this.gameState === GAMESTATE.GAMEOVER) {
 
             this.gameState = GAMESTATE.PAUSE;
             document.getElementById("neon-wrapper").style.display = "flex"
-            this.audio.mainVolumeChange(0.2);
+            //this.audio.mainVolumeChange(0.2);
         }
 
     }
@@ -163,6 +268,10 @@ export default class Game {
         }
 
     }
+
+
+
+
 }
 
 
@@ -170,106 +279,3 @@ export default class Game {
 ////////////////////// collision audio ////////////////////////
 
 //let myCollisionSound = document.getElementById("collisionSound");
-var flag_mute_unmute = 1;
-let slider_song2 = document.getElementById("setting_song2")
-let img_song2 = document.getElementById("setting_unmute2")
-var slider_song1 = document.getElementById("setting_song1")
-var img_song1 = document.getElementById("setting_unmute1")
-
-let myFirstEnter_2 = localStorage.getItem("firstEnter_2");
-if (myFirstEnter_2 == null) {
-    localStorage.setItem('sliderVal_2', 50);
-    localStorage.setItem("firstEnter_2", 1);
-}
-
-slider_song2.value = JSON.parse(localStorage.getItem('sliderVal_2'))
-//myCollisionSound.volume = slider_song2.value/100;
-if(slider_song2.value!=null){
-audio.sfxVolumeChange(slider_song2.value / 100);
-
-
-}
-if (slider_song2.value == 0) {
-    img_song2.setAttribute('src', 'assets/mute.png')
-}
-else {
-    img_song2.setAttribute('src', 'assets/voice.png')
-}
-
-slider_song1.addEventListener('change', e => {
-    console.log("yes yes");
-    var val = e.target.value;
-    mainMusic.volume = val / 100;
-    mainaud.mainVolume= val / 100;
-
-    mainaud.mainVolumeChange( val / 100);
-    localStorage.setItem('sliderVal', val)
-    if (val == 0) {
-        img_song1.setAttribute('src', 'assets/mute.png')
-        flag_mute_unmute = 0;
-    }
-    else {
-        img_song1.setAttribute('src', 'assets/voice.png')
-        flag_mute_unmute = 1;
-    }
-
-});
-
-img_song1.addEventListener('click', e => {
-
-    if (JSON.parse(localStorage.getItem('sliderVal')) == 0 && JSON.parse(localStorage.getItem('pre_sliderVal')) != 0) {
-        img_song1.setAttribute('src', 'assets/mute.png')
-        localStorage.setItem('pre_sliderVal', slider_song1.value)
-        localStorage.setItem('sliderVal', 0)
-        slider_song1.value = 0;
-        flag_mute_unmute = 0;
-    }
-    else {
-        img_song1.setAttribute('src', 'assets/voice.png')
-        slider_song1.value = JSON.parse(localStorage.getItem('pre_sliderVal'));
-        localStorage.setItem('pre_sliderVal', 0)
-        localStorage.setItem('sliderVal', slider_song1.value)
-        flag_mute_unmute = 1;
-    }
-
-});
-
-slider_song2.addEventListener('change', e => {
-    console.log("yes");
-    var val = e.target.value;
-    audio.sfxVolumeChange(val / 100);
-
-    //myCollisionSound.volume = val / 100;
-    localStorage.setItem('sliderVal_2', val)
-    if (val == 0) {
-        img_song2.setAttribute('src', 'assets/mute.png')
-    }
-    else {
-        img_song2.setAttribute('src', 'assets/voice.png')
-    }
-
-});
-
-
-img_song2.addEventListener('click', e => {
-
-    if (JSON.parse(localStorage.getItem('sliderVal_2')) != 0) {
-        img_song2.setAttribute('src', 'assets/mute.png')
-        localStorage.setItem('pre_sliderVal_2', slider_song2.value)
-        localStorage.setItem('sliderVal_2', 0)
-        slider_song2.value = 0;
-        audio.sfxVolumeChange(0);
-
-        // myCollisionSound.volume = 0;
-    }
-    else {
-        img_song2.setAttribute('src', 'assets/voice.png')
-        slider_song2.value = JSON.parse(localStorage.getItem('pre_sliderVal_2'));
-        localStorage.setItem('pre_sliderVal_2', 0)
-        localStorage.setItem('sliderVal_2', slider_song2.value)
-        audio.sfxVolumeChange(slider_song2.value / 100);
-
-        //myCollisionSound.volume = slider_song2.value / 100;
-    }
-
-});

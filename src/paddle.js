@@ -36,4 +36,5 @@ export default class Paddle{
     stop(){
         this.speed=0;
     }
+    
 }
