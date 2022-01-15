@@ -1,5 +1,6 @@
 import {detectCollision} from "/src/collisionDetection.js";
-let myCollisionSound = document.getElementById("collisionSound");
+//let myCollisionSound = document.getElementById("collisionSound");
+import Music from "./music.js"
 
 export default class Brick{
     constructor(game,position){
@@ -12,13 +13,17 @@ export default class Brick{
         this.height=game.gameHeight*0.05;
         this.markedForDeletion=false;
         this.level = JSON.parse(localStorage.getItem("level"));
+        this.audio = new Music();
+
     }
 
     update(){
         if (detectCollision(this.game.ball,this)){
             this.game.ball.speed.y=-this.game.ball.speed.y;
             this.markedForDeletion=true;
-            myCollisionSound.play();
+            this.audio.sfxVolumeChange(JSON.parse(localStorage.getItem('sliderVal_2')/100));
+            this.audio.sfxPlay();
+            //myCollisionSound.play();
 
             switch(this.level){
                 case 0:

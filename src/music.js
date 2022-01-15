@@ -1,9 +1,9 @@
 export default class Music{
     constructor(){
-        // this.sfxVolume=0.4;
+        this.sfxVolume=0.4;
         this.mainVolume= JSON.parse(localStorage.getItem("sliderVal"))/100;
         this.mainMusic=new Audio('assets/music.mp3');
-        // this.sfxMusic=new Audio('assets/music.mp3');
+        this.sfxMusic=new Audio('assets/collision.mp3');
         this.mainMusic.loop=true;
 
     }

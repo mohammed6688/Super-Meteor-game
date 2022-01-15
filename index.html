@@ -73,7 +73,7 @@
                     <label for="song1"><img src="assets/voice.png" id="img_unmute1"></label>
                     <input id="song1" type="range" min="0" max="100">
                     <audio src="assets/music.mp3" id="mainMusic" controls style="display: none;"></audio>
-                    <audio src="assets/collision.mp3" id="collisionSound" controls style="display: none;"></audio>
+                    <!-- <audio src="assets/collision.mp3" id="collisionSound" controls style="display: none;"></audio> -->
                 </div>
                 <div class="slider">
                     <label for="song2"><img src="assets/voice.png" id="img_unmute2"></label>
@@ -112,8 +112,16 @@
     <div style="display: none;" id="neon-wrapper">
         <div class="neon-text">PAUSE MENU</div>
         <div id="resume" class="inner-wrapper"> RESUME</div>
-        <div id="setting" class="inner-wrapper"> SETTING</div>
+        <!-- <div id="setting" class="inner-wrapper"> SETTING</div> -->
         <div id="exit" class="inner-wrapper"> EXIT</div>
+        <div class="slider" style="margin-top: 2rem;">
+            <label for="song1"><img src="assets/voice.png" id="setting_unmute1"></label>
+            <input id="setting_song1" type="range" min="0" max="100">
+        </div>
+        <div class="slider" style="margin-bottom: 2rem;">
+            <label for="song2"><img src="assets/voice.png" id="setting_unmute2"></label>
+            <input id="setting_song2" type="range" min="0" max="100">
+        </div>
     </div>
 
     <img id="back" width="22px" height="22px" src="assets/left_arrow.png" alt="">
