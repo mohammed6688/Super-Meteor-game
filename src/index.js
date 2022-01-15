@@ -215,7 +215,6 @@ button.addEventListener('click', e => {
     if(mainMusic.paused){
         audio.mainPlay();
     }
-    
 });
 
 back.addEventListener('click', e => {
@@ -255,7 +254,10 @@ settings.addEventListener('click', e => {
 
 slider_song1.addEventListener('change', e => {
     var val = e.target.value;
+    
     mainMusic.volume = val / 100;
+    audio.mainVolume = val / 100;
+
     localStorage.setItem('sliderVal', val)
     if (val == 0) {
         img_song1.setAttribute('src', 'assets/mute.png')
