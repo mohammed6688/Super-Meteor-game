@@ -207,6 +207,7 @@ else {
 var flag_mute_unmute = 1;
 mainMusic.autoplay = true
 mainMusic.loop = true
+
 button.addEventListener('click', e => {
     wrapper.style.display = "none"
     title.style.display = "block"
@@ -254,9 +255,9 @@ settings.addEventListener('click', e => {
 
 slider_song1.addEventListener('change', e => {
     var val = e.target.value;
-    
+
     mainMusic.volume = val / 100;
-    audio.mainVolume = val / 100;
+    audio.mainVolumeChange( val / 100);
 
     localStorage.setItem('sliderVal', val)
     if (val == 0) {
