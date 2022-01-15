@@ -258,7 +258,7 @@ slider_song1.addEventListener('change', e => {
     var val = e.target.value;
 
     //mainMusic.volume = val / 100;
-    audio.mainVolumeChange( val / 100);
+    game.audio.mainVolumeChange( val / 100);
 
     localStorage.setItem('sliderVal', val)
     if (val == 0) {
