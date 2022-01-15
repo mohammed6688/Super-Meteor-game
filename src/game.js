@@ -198,6 +198,7 @@ slider_song1.addEventListener('change', e => {
     console.log("yes yes");
     var val = e.target.value;
     mainMusic.volume = val / 100;
+    audio.mainVolumeChange( val / 100);
     localStorage.setItem('sliderVal', val)
     if (val == 0) {
         img_song1.setAttribute('src', 'assets/mute.png')
