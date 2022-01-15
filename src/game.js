@@ -141,6 +141,8 @@ export default class Game {
             ctx.fillStyle = "white";
             ctx.textAlign = "center";
             ctx.fillText("Press space to start battle ", this.gameWidth / 2, this.gameHeight / 2);
+
+            
         }
 
         if (this.gameState === GAMESTATE.GAMEOVER) {

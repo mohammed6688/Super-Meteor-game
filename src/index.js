@@ -271,6 +271,33 @@ slider_song1.addEventListener('change', e => {
 
 });
 
+canvas.addEventListener('click',e=>{
+    if(game.gameState===2){
+        game.gameState=1
+    }
+    
+});
+canvas.addEventListener("mousedown",e=>{
+    if(e.offsetX>game.paddle.position.x+game.paddle.width/2){
+        console.log("right");
+        game.paddle.moveRight();
+    }else{
+        console.log("left");
+        game.paddle.moveLeft();
+
+    }
+})
+
+canvas.addEventListener("mouseup",e=>{
+    if(e.offsetX>game.paddle.position.x+game.paddle.width/2){
+        console.log("right");
+        game.paddle.stop();
+    }else{
+        console.log("left");
+        game.paddle.stop();
+
+    }
+})
 img_song1.addEventListener('click', e => {
 
     if (JSON.parse(localStorage.getItem('sliderVal')) == 0 && JSON.parse(localStorage.getItem('pre_sliderVal')) != 0) {
