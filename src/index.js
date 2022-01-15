@@ -5,7 +5,7 @@ var button = document.getElementById("button");
 
 var settings = document.getElementById("img_setting")
 var sub_menu = document.getElementById("audioDiv")
-// var mainMusic = document.getElementById("mainMusic")
+var mainMusic = document.getElementById("mainMusic")
 var slider_song1 = document.getElementById("song1")
 var img_song1 = document.getElementById("img_unmute1")
 var score = document.getElementById("score");
@@ -205,8 +205,8 @@ else {
 
 
 var flag_mute_unmute = 1;
-// mainMusic.autoplay = true
-// mainMusic.loop = true
+mainMusic.autoplay = true
+mainMusic.loop = true
 
 document.addEventListener("mousemove",e=>{
     //console.log("ss");
