@@ -89,6 +89,8 @@ easy.addEventListener('click', e => {
     diffContainer.style.display = "none";
     title.style.display = "none";
     if(game.gameState==0){
+    game.audio.mainPause();
+        
         game=  new Game(GAME_WIDTH, GAME_HEIGHT);
     }
 });
@@ -99,6 +101,8 @@ medium.addEventListener('click', e => {
     diffContainer.style.display = "none";
     title.style.display = "none";
     if(game.gameState==0){
+    game.audio.mainPause();
+
         game=  new Game(GAME_WIDTH, GAME_HEIGHT);
     }
 });
@@ -108,6 +112,8 @@ hard.addEventListener('click', e => {
     diffContainer.style.display = "none";
     title.style.display = "none";
     if(game.gameState==0){
+    game.audio.mainPause();
+
         game=  new Game(GAME_WIDTH, GAME_HEIGHT);
     }
 });
