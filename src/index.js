@@ -212,6 +212,10 @@ button.addEventListener('click', e => {
     title.style.display = "block"
     diffContainer.style.display = "block"
     back.style.display = "block"
+    if(mainMusic.paused){
+        audio.mainPlay();
+    }
+    
 });
 
 back.addEventListener('click', e => {
